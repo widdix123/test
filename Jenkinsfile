@@ -14,11 +14,9 @@ node ('jslave1') {
 	
 	
 	stage('Dockerfile Code Checkout'){
-	    sh """
-	    	mkdir test
-		cd test
-	    """
-	    checkout scm
+	   dir('CalibrationResults') {
+        	git url: 'https://github.com/spring-projects/spring-petclinic.git'
+    	   }
 	}
 	
 }
