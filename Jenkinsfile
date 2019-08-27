@@ -30,14 +30,14 @@ node ('jslave1') {
 	stage('Docker prep'){
 	   sh """
 	   	cp demo/Dockerfile ./Dockerfile
-	   	docker build -t "spring-petclinic" .
+	   	//docker build -t "spring-petclinic" .
 	   """
 	}
 	
 	stage('Docker push'){
 	   sh """
 	   	docker tag spring-petclinic gupta220/myhub:r1
-		docker push gupta220/myhub:r1
+		//docker push gupta220/myhub:r1
 	   """
 	}
 }
@@ -46,11 +46,14 @@ timeout(time: 15, unit: "MINUTES") {
     input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
 }
 
-node('jslave1') {
-    doCheckout(BRANCH_NAME, GIT_URL) 
+node('jslave1') { 
     stage('Deploy') {
-        sh """
-		echo "Starting deployment"
+        dir('demo') {
+		checkout scm
+    	}
+	sh """
+		pwd
+	
 	"""
     }
 }
