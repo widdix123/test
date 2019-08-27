@@ -1,3 +1,6 @@
+def BRANCH_NAME = "master"
+def GIT_URL = "https://github.com/widdix123/test.git"
+
 node ('jslave1') {
 	/* environment {
     		registry = "docker_hub_account/repository_name"
@@ -37,5 +40,17 @@ node ('jslave1') {
 		docker push gupta220/myhub:r1
 	   """
 	}
-	
+}
+
+timeout(time: 15, unit: "MINUTES") {
+    input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
+}
+
+node('jslave1') {
+    doCheckout(BRANCH_NAME, GIT_URL) 
+    stage('Deploy') {
+        sh """
+		echo "Starting deployment"
+	"""
+    }
 }
