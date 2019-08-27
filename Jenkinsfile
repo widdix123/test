@@ -52,7 +52,7 @@ node{
 		checkout scm
     	}
 	sh """
-		ansible-playbook ec2.yaml
+		ansible-playbook demo/ec2.yaml
 	
 	"""
     }
