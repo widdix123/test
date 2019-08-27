@@ -30,15 +30,19 @@ node ('master') {
 	stage('Docker prep'){
 	   sh """
 	   	cp demo/Dockerfile ./Dockerfile
-	   	docker build -t "spring-petclinic" .
+	   	#docker build -t "spring-petclinic" .
 	   """
 	}
 	
 	stage('Docker push'){
-	   sh """
-	   	docker tag spring-petclinic gupta220/myhub:r1
-		docker push gupta220/myhub:r1
-	   """
+
+	   withCredentials([usernamePassword( credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+		   
+		sh """
+			docker login -u ${USERNAME} -p ${PASSWORD}
+			docker tag spring-petclinic gupta220/myhub:r1
+			docker push gupta220/myhub:r1
+		"""
 	}
 }
 
