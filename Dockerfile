@@ -4,7 +4,7 @@ COPY spring-petclinic /spring-petclinic/
 
 RUN cd /spring-petclinic/ \
     && unset MAVEN_CONFIG \
-    && ./mvnm package
+    && ./mvnw package
     
 EXPOSE 8080
 
