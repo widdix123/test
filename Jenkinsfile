@@ -11,6 +11,10 @@ node ('jslave1') {
 	   dir('spring-petclinic') {
         	git url: 'https://github.com/spring-projects/spring-petclinic.git'
     	   }
+	   dir('docker') {
+        	//git url: 'https://github.com/spring-projects/spring-petclinic.git'
+		checkout scm
+    	   }
 	}
 	
 }
