@@ -42,9 +42,9 @@ node {
 	}
 }
 
-timeout(time: 15, unit: "MINUTES") {
+/* timeout(time: 15, unit: "MINUTES") {
     input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
-}
+}*/
 
 node{ 
     stage('Deploy') {
@@ -52,7 +52,7 @@ node{
 		checkout scm
     	}
 	sh """
-		pwd
+		ansible-playbook ec2.yaml
 	
 	"""
     }
