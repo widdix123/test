@@ -1,7 +1,7 @@
 def BRANCH_NAME = "master"
 def GIT_URL = "https://github.com/widdix123/test.git"
 
-node ('master') {
+node {
 	 environment {
     		registry = "docker_hub_account/repository_name"
     		registryCredential = 'dockerhub'
@@ -51,7 +51,7 @@ timeout(time: 15, unit: "MINUTES") {
     input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
 }
 
-node('master') { 
+node{ 
     stage('Deploy') {
         dir('demo') {
 		checkout scm
