@@ -2,10 +2,10 @@ def BRANCH_NAME = "master"
 def GIT_URL = "https://github.com/widdix123/test.git"
 
 node ('master') {
-	/* environment {
+	 environment {
     		registry = "docker_hub_account/repository_name"
     		registryCredential = 'dockerhub'
-  	} */
+  	}
 	
 	stage ('Cleanup') {
 		deleteDir()	
