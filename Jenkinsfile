@@ -33,7 +33,7 @@ node ('jslave1') {
 	
 	stage('Docker push'){
 	   sh """
-	   	docker tag spring-petclinic gupta220/myhub:latest
+	   	docker tag spring-petclinic gupta220/myhub:r1
 		docker push gupta220/myhub:r1
 	   """
 	}
