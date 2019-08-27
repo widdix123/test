@@ -41,7 +41,7 @@ node ('master') {
 		sh """
 			docker login -u ${USERNAME} -p ${PASSWORD}
 			docker tag spring-petclinic gupta220/myhub:r1
-			docker push gupta220/myhub:r1
+			#docker push gupta220/myhub:r1
 		"""
 	    }
 	}
