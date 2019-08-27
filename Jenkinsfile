@@ -1,5 +1,8 @@
 node ('jslave1') {
 	
+	stage ('Cleanup') {
+		deleteDir()	
+	}
 	stage ('Prep') {
 	    sh """
 	        docker --version
