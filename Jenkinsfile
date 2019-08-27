@@ -9,11 +9,14 @@ node ('jslave1') {
 	
 	stage ('Code Checkout') {
 	     checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]]
+	     
 	}
 	
 	
 	stage('Dockerfile Code Checkout'){
-	    checkout scm
+	    sh """
+	    	pwd
+	    """
 	}
 	
 }
