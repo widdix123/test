@@ -19,6 +19,7 @@ node ('jslave1') {
 	
 	stage('Docker prep'){
 	   sh """
+	   	pwd
 	   	cp docker/Dockerfile ./Dockerfile
 	   	docker build -t "spring-petclinic" .
 	   """
