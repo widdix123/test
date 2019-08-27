@@ -1,4 +1,8 @@
 node ('jslave1') {
+	environment {
+    		registry = "docker_hub_account/repository_name"
+    		registryCredential = 'dockerhub'
+  	}
 	
 	stage ('Cleanup') {
 		deleteDir()	
@@ -22,9 +26,15 @@ node ('jslave1') {
 	
 	stage('Docker prep'){
 	   sh """
-	   	pwd
 	   	cp demo/Dockerfile ./Dockerfile
 	   	docker build -t "spring-petclinic" .
+	   """
+	}
+	
+	stage('Docker push'){
+	   sh """
+	   	docker tag spring-petclinic gupta220/myhub:latest
+		docker push gupta220/myhub:latest
 	   """
 	}
 	
