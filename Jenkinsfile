@@ -1,8 +1,8 @@
 node ('jslave1') {
-	environment {
+	/* environment {
     		registry = "docker_hub_account/repository_name"
     		registryCredential = 'dockerhub'
-  	}
+  	} */
 	
 	stage ('Cleanup') {
 		deleteDir()	
