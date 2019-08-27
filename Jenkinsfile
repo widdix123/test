@@ -15,8 +15,10 @@ node ('jslave1') {
 	
 	stage('Dockerfile Code Checkout'){
 	    sh """
-	    	pwd
+	    	mkdir test
+		cd test
 	    """
+	    checkout scm
 	}
 	
 }
